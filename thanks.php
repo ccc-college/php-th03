@@ -17,7 +17,7 @@ if (((isset($_POST["name"])) && ($_POST["name"] != "")) or ((isset($_POST["email
             $write = $time . ", ". $name . ", " . $email. "\n";  	//新しく書き込むデータを <> で区切って整形
             $log = fopen ("log.txt","a");  	 //書き込み用モードでデータを開く
             flock ($log, LOCK_EX); 	 //ファイルロック開始
-            fputs ($log,$write);   	//書き込み処理
+            fwrite ($log,$write);   	//書き込み処理
             flock ($log, LOCK_UN);  	  //ファイルロック解除
             fclose ($log); 		 //ファイルを閉じる
 }
